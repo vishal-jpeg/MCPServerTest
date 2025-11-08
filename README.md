@@ -1,0 +1,1 @@
+# ShopSmartMCP.API
