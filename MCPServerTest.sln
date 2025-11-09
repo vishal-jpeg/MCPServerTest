@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopSmartMCP.API", "ShopSmartMCP.API\ShopSmartMCP.API.csproj", "{A34BCA96-81BC-4A74-85B8-80148BD3B9B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCPServerTest", "ShopSmartMCP.API\MCPServerTest.csproj", "{A34BCA96-81BC-4A74-85B8-80148BD3B9B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65423D16-796B-4ACE-BA96-902DD5AF0686}
 	EndGlobalSection
 EndGlobal
