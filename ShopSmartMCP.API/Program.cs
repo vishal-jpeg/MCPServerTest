@@ -1,24 +1,21 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using ModelContextProtocol;
+using System.Net.Http.Headers;
 
-// Add services
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();         
-builder.Services.AddCors(options =>
+var builder = Host.CreateEmptyApplicationBuilder(settings: null);
+
+builder.Services.AddMcpServer()
+    .WithStdioServerTransport()
+    .WithToolsFromAssembly();
+
+builder.Services.AddSingleton(_ =>
 {
-    options.AddDefaultPolicy(policy =>
-        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+    var client = new HttpClient() { BaseAddress = new Uri("https://api.weather.gov") };
+    client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("weather-tool", "1.0"));
+    return client;
 });
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseCors();
-app.MapControllers();
-
-app.Run();
+await app.RunAsync();
